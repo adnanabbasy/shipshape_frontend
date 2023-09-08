@@ -1,0 +1,3327 @@
+{
+	"info": {
+		"_postman_id": "632ee00e-dc9b-4060-bee5-7df0a6899730",
+		"name": "Shipshape_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29324379"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"item": [
+				{
+					"name": "Register",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Nokia\",\n    \"password\": 500,\n    \"email\": \"Nokia Mobile\",\n    \"first_name\": \"Nokia Mobile\",\n    \"last_name\": \"Nokia Mobile\",\n    \"user_type\": \"Nokia Mobile\",\n    \"subscription_type\": \"Nokia Mobile\",\n    \"subcription_id\": \"Nokia Mobile\",\n    \"user_status\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"12345678\",\n    \"email\": \"john@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BlogCategory",
+			"item": [
+				{
+					"name": "Blog category add",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbmFuU2hpcCIsInBhc3N3b3JkIjoiMTIzNDU2NzgiLCJlbWFpbCI6ImFkbmFuQGdtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJBZG5hbiIsImxhc3RfbmFtZSI6IkFiYmFzaSIsInVzZXJfdHlwZSI6ImFkbWluIiwic3Vic2NyaXB0aW9uX3R5cGUiOiJmcmVlIiwic3ViY3JpcHRpb25faWQiOjEsInVzZXJfc3RhdHVzIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoifSwiX3ByZXZpb3VzRGF0YVZhbHVlcyI6eyJpZCI6MSwidXNlcm5hbWUiOiJhZG5hblNoaXAiLCJwYXNzd29yZCI6IjEyMzQ1Njc4IiwiZW1haWwiOiJhZG5hbkBnbWFpbC5jb20iLCJmaXJzdF9uYW1lIjoiQWRuYW4iLCJsYXN0X25hbWUiOiJBYmJhc2kiLCJ1c2VyX3R5cGUiOiJhZG1pbiIsInN1YnNjcmlwdGlvbl90eXBlIjoiZnJlZSIsInN1YmNyaXB0aW9uX2lkIjoxLCJ1c2VyX3N0YXR1cyI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIn0sInVuaXFubyI6MSwiX2NoYW5nZWQiOnt9LCJfb3B0aW9ucyI6eyJpc05ld1JlY29yZCI6ZmFsc2UsIl9zY2hlbWEiOm51bGwsIl9zY2hlbWFEZWxpbWl0ZXIiOiIiLCJyYXciOnRydWUsImF0dHJpYnV0ZXMiOlsiaWQiLCJ1c2VybmFtZSIsInBhc3N3b3JkIiwiZW1haWwiLCJmaXJzdF9uYW1lIiwibGFzdF9uYW1lIiwidXNlcl90eXBlIiwic3Vic2NyaXB0aW9uX3R5cGUiLCJzdWJjcmlwdGlvbl9pZCIsInVzZXJfc3RhdHVzIiwiY3JlYXRlZEF0IiwidXBkYXRlZEF0Il19LCJpc05ld1JlY29yZCI6ZmFsc2UsImlhdCI6MTY5MjEzNjIyMiwiZXhwIjoxNjkyMTM5ODIyfQ.EdQZQvqw10b80ZQYtXVQ-tRqGuEedQYM8joLRwopjVk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Shipping\",\n    \"status\": true\n}\n\n// {\n//     \"name\": \"Inland Waterways\",\n//     \"status\": true\n// }\n\n// {\n//     \"name\": \"Fishing2\",\n//     \"status\": true\n// }\n\n// {\n//     \"name\": \"Ports\",\n//     \"status\": false\n// }\n\n// category: Shipping, Inland Waterways, Fisheries, Ports",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/blogcategory/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"blogcategory",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Blog category list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Shipping\",\n    \"status\": true\n}\n\n// category: Shipping, Inland Waterways, Fisheries, Ports",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/blogcategory/all",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"blogcategory",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Blog category published",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Shipping\",\n    \"status\": true\n}\n\n// category: Shipping, Inland Waterways, Fisheries, Ports",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/blogcategory/addblogcategory",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"blogcategory",
+								"addblogcategory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Blog category Detail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Shipping\",\n    \"status\": true\n}\n\n// category: Shipping, Inland Waterways, Fisheries, Ports",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/blogcategory/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"blogcategory",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Blog category Update",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Port\",\n    \"status\": false\n}\n\n// category: Shipping, Inland Waterways, Fisheries, Ports",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/blogcategory/4",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"blogcategory",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Blog category Update Copy",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Shipping\",\n    \"status\": true\n}\n\n// category: Shipping, Inland Waterways, Fisheries, Ports",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/blogcategory/4",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"blogcategory",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Blog",
+			"item": [
+				{
+					"name": "Blog  add",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbmFuU2hpcCIsInBhc3N3b3JkIjoiMTIzNDU2NzgiLCJlbWFpbCI6ImFkbmFuQGdtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJBZG5hbiIsImxhc3RfbmFtZSI6IkFiYmFzaSIsInVzZXJfdHlwZSI6ImFkbWluIiwic3Vic2NyaXB0aW9uX3R5cGUiOiJmcmVlIiwic3ViY3JpcHRpb25faWQiOjEsInVzZXJfc3RhdHVzIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoifSwiX3ByZXZpb3VzRGF0YVZhbHVlcyI6eyJpZCI6MSwidXNlcm5hbWUiOiJhZG5hblNoaXAiLCJwYXNzd29yZCI6IjEyMzQ1Njc4IiwiZW1haWwiOiJhZG5hbkBnbWFpbC5jb20iLCJmaXJzdF9uYW1lIjoiQWRuYW4iLCJsYXN0X25hbWUiOiJBYmJhc2kiLCJ1c2VyX3R5cGUiOiJhZG1pbiIsInN1YnNjcmlwdGlvbl90eXBlIjoiZnJlZSIsInN1YmNyaXB0aW9uX2lkIjoxLCJ1c2VyX3N0YXR1cyI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIn0sInVuaXFubyI6MSwiX2NoYW5nZWQiOnt9LCJfb3B0aW9ucyI6eyJpc05ld1JlY29yZCI6ZmFsc2UsIl9zY2hlbWEiOm51bGwsIl9zY2hlbWFEZWxpbWl0ZXIiOiIiLCJyYXciOnRydWUsImF0dHJpYnV0ZXMiOlsiaWQiLCJ1c2VybmFtZSIsInBhc3N3b3JkIiwiZW1haWwiLCJmaXJzdF9uYW1lIiwibGFzdF9uYW1lIiwidXNlcl90eXBlIiwic3Vic2NyaXB0aW9uX3R5cGUiLCJzdWJjcmlwdGlvbl9pZCIsInVzZXJfc3RhdHVzIiwiY3JlYXRlZEF0IiwidXBkYXRlZEF0Il19LCJpc05ld1JlY29yZCI6ZmFsc2UsImlhdCI6MTY5MjEzNjIyMiwiZXhwIjoxNjkyMTM5ODIyfQ.EdQZQvqw10b80ZQYtXVQ-tRqGuEedQYM8joLRwopjVk",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "Shipping industry 2",
+									"type": "text"
+								},
+								{
+									"key": "author_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Shipping",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam nec justo lacinia, mattis nunc eget, lacinia ex.",
+									"type": "text"
+								},
+								{
+									"key": "blog_image",
+									"type": "file",
+									"src": "/Users/user/Desktop/Screen Shot 2023-05-12 at 3.39.52 PM.png"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/blogs/add",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"blogs",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Add review",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbmFuU2hpcCIsInBhc3N3b3JkIjoiMTIzNDU2NzgiLCJlbWFpbCI6ImFkbmFuQGdtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJBZG5hbiIsImxhc3RfbmFtZSI6IkFiYmFzaSIsInVzZXJfdHlwZSI6ImFkbWluIiwic3Vic2NyaXB0aW9uX3R5cGUiOiJmcmVlIiwic3ViY3JpcHRpb25faWQiOjEsInVzZXJfc3RhdHVzIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoifSwiX3ByZXZpb3VzRGF0YVZhbHVlcyI6eyJpZCI6MSwidXNlcm5hbWUiOiJhZG5hblNoaXAiLCJwYXNzd29yZCI6IjEyMzQ1Njc4IiwiZW1haWwiOiJhZG5hbkBnbWFpbC5jb20iLCJmaXJzdF9uYW1lIjoiQWRuYW4iLCJsYXN0X25hbWUiOiJBYmJhc2kiLCJ1c2VyX3R5cGUiOiJhZG1pbiIsInN1YnNjcmlwdGlvbl90eXBlIjoiZnJlZSIsInN1YmNyaXB0aW9uX2lkIjoxLCJ1c2VyX3N0YXR1cyI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIn0sInVuaXFubyI6MSwiX2NoYW5nZWQiOnt9LCJfb3B0aW9ucyI6eyJpc05ld1JlY29yZCI6ZmFsc2UsIl9zY2hlbWEiOm51bGwsIl9zY2hlbWFEZWxpbWl0ZXIiOiIiLCJyYXciOnRydWUsImF0dHJpYnV0ZXMiOlsiaWQiLCJ1c2VybmFtZSIsInBhc3N3b3JkIiwiZW1haWwiLCJmaXJzdF9uYW1lIiwibGFzdF9uYW1lIiwidXNlcl90eXBlIiwic3Vic2NyaXB0aW9uX3R5cGUiLCJzdWJjcmlwdGlvbl9pZCIsInVzZXJfc3RhdHVzIiwiY3JlYXRlZEF0IiwidXBkYXRlZEF0Il19LCJpc05ld1JlY29yZCI6ZmFsc2UsImlhdCI6MTY5MjEzNjIyMiwiZXhwIjoxNjkyMTM5ODIyfQ.EdQZQvqw10b80ZQYtXVQ-tRqGuEedQYM8joLRwopjVk",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/reviews/add",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reviews",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list review",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "john",
+									"type": "text"
+								},
+								{
+									"key": "userid",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "review",
+									"value": "BoatRx came in to do my refrigeration. Generally they work on higher end boats but they made an exception when I needed them the most. Treated me like he would the serious yachts he works on. His compassion and skill have no end.",
+									"type": "text"
+								},
+								{
+									"key": "review_images",
+									"type": "file",
+									"src": "/Users/user/Downloads/freepik/smiling-confident-businesswoman-posing-with-arms-folded.jpg"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/reviews/all",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reviews",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Single review",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "john",
+									"type": "text"
+								},
+								{
+									"key": "userid",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "review",
+									"value": "BoatRx came in to do my refrigeration. Generally they work on higher end boats but they made an exception when I needed them the most. Treated me like he would the serious yachts he works on. His compassion and skill have no end.",
+									"type": "text"
+								},
+								{
+									"key": "review_images",
+									"type": "file",
+									"src": "/Users/user/Downloads/freepik/smiling-confident-businesswoman-posing-with-arms-folded.jpg"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/reviews/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reviews",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit review",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Adam\",\n    \"review\": \"BoatRx came in to do my refrigeration. \",\n    \"status\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/reviews/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reviews",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete review",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "john",
+									"type": "text"
+								},
+								{
+									"key": "userid",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "review",
+									"value": "BoatRx came in to do my refrigeration. Generally they work on higher end boats but they made an exception when I needed them the most. Treated me like he would the serious yachts he works on. His compassion and skill have no end.",
+									"type": "text"
+								},
+								{
+									"key": "review_images",
+									"type": "file",
+									"src": "/Users/user/Downloads/freepik/smiling-confident-businesswoman-posing-with-arms-folded.jpg"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/reviews/2",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"reviews",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Marine Professionals",
+			"item": [
+				{
+					"name": "Marine   add",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbmFuU2hpcCIsInBhc3N3b3JkIjoiMTIzNDU2NzgiLCJlbWFpbCI6ImFkbmFuQGdtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJBZG5hbiIsImxhc3RfbmFtZSI6IkFiYmFzaSIsInVzZXJfdHlwZSI6ImFkbWluIiwic3Vic2NyaXB0aW9uX3R5cGUiOiJmcmVlIiwic3ViY3JpcHRpb25faWQiOjEsInVzZXJfc3RhdHVzIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoifSwiX3ByZXZpb3VzRGF0YVZhbHVlcyI6eyJpZCI6MSwidXNlcm5hbWUiOiJhZG5hblNoaXAiLCJwYXNzd29yZCI6IjEyMzQ1Njc4IiwiZW1haWwiOiJhZG5hbkBnbWFpbC5jb20iLCJmaXJzdF9uYW1lIjoiQWRuYW4iLCJsYXN0X25hbWUiOiJBYmJhc2kiLCJ1c2VyX3R5cGUiOiJhZG1pbiIsInN1YnNjcmlwdGlvbl90eXBlIjoiZnJlZSIsInN1YmNyaXB0aW9uX2lkIjoxLCJ1c2VyX3N0YXR1cyI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIn0sInVuaXFubyI6MSwiX2NoYW5nZWQiOnt9LCJfb3B0aW9ucyI6eyJpc05ld1JlY29yZCI6ZmFsc2UsIl9zY2hlbWEiOm51bGwsIl9zY2hlbWFEZWxpbWl0ZXIiOiIiLCJyYXciOnRydWUsImF0dHJpYnV0ZXMiOlsiaWQiLCJ1c2VybmFtZSIsInBhc3N3b3JkIiwiZW1haWwiLCJmaXJzdF9uYW1lIiwibGFzdF9uYW1lIiwidXNlcl90eXBlIiwic3Vic2NyaXB0aW9uX3R5cGUiLCJzdWJjcmlwdGlvbl9pZCIsInVzZXJfc3RhdHVzIiwiY3JlYXRlZEF0IiwidXBkYXRlZEF0Il19LCJpc05ld1JlY29yZCI6ZmFsc2UsImlhdCI6MTY5MjEzNjIyMiwiZXhwIjoxNjkyMTM5ODIyfQ.EdQZQvqw10b80ZQYtXVQ-tRqGuEedQYM8joLRwopjVk",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "BoatRx1",
+									"type": "text"
+								},
+								{
+									"key": "profile_image",
+									"type": "file",
+									"src": "/Users/user/Downloads/freepik/green-sofa-white-living-room-with-free-space.jpg"
+								},
+								{
+									"key": "services",
+									"value": "2, 4",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Installer and Distributor of Battery Powered Air Conditioning Systems",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "256 Marginal St, Boston, MA, 02128",
+									"type": "text"
+								},
+								{
+									"key": "longitude",
+									"value": "32423423423423",
+									"type": "text"
+								},
+								{
+									"key": "latitude",
+									"value": "54654645645646",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://boatrx.com/",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "888-466-2304",
+									"type": "text"
+								},
+								{
+									"key": "multi_images",
+									"type": "file",
+									"src": [
+										"/Users/user/Downloads/freepik/giant-building-with-sun.jpg",
+										"/Users/user/Downloads/freepik/green-park-view.jpg"
+									]
+								},
+								{
+									"key": "reviews_id",
+									"value": "1, 2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-professional/add",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-professional",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Update",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbmFuU2hpcCIsInBhc3N3b3JkIjoiMTIzNDU2NzgiLCJlbWFpbCI6ImFkbmFuQGdtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJBZG5hbiIsImxhc3RfbmFtZSI6IkFiYmFzaSIsInVzZXJfdHlwZSI6ImFkbWluIiwic3Vic2NyaXB0aW9uX3R5cGUiOiJmcmVlIiwic3ViY3JpcHRpb25faWQiOjEsInVzZXJfc3RhdHVzIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoifSwiX3ByZXZpb3VzRGF0YVZhbHVlcyI6eyJpZCI6MSwidXNlcm5hbWUiOiJhZG5hblNoaXAiLCJwYXNzd29yZCI6IjEyMzQ1Njc4IiwiZW1haWwiOiJhZG5hbkBnbWFpbC5jb20iLCJmaXJzdF9uYW1lIjoiQWRuYW4iLCJsYXN0X25hbWUiOiJBYmJhc2kiLCJ1c2VyX3R5cGUiOiJhZG1pbiIsInN1YnNjcmlwdGlvbl90eXBlIjoiZnJlZSIsInN1YmNyaXB0aW9uX2lkIjoxLCJ1c2VyX3N0YXR1cyI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIn0sInVuaXFubyI6MSwiX2NoYW5nZWQiOnt9LCJfb3B0aW9ucyI6eyJpc05ld1JlY29yZCI6ZmFsc2UsIl9zY2hlbWEiOm51bGwsIl9zY2hlbWFEZWxpbWl0ZXIiOiIiLCJyYXciOnRydWUsImF0dHJpYnV0ZXMiOlsiaWQiLCJ1c2VybmFtZSIsInBhc3N3b3JkIiwiZW1haWwiLCJmaXJzdF9uYW1lIiwibGFzdF9uYW1lIiwidXNlcl90eXBlIiwic3Vic2NyaXB0aW9uX3R5cGUiLCJzdWJjcmlwdGlvbl9pZCIsInVzZXJfc3RhdHVzIiwiY3JlYXRlZEF0IiwidXBkYXRlZEF0Il19LCJpc05ld1JlY29yZCI6ZmFsc2UsImlhdCI6MTY5MjEzNjIyMiwiZXhwIjoxNjkyMTM5ODIyfQ.EdQZQvqw10b80ZQYtXVQ-tRqGuEedQYM8joLRwopjVk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"BoatRx\",\n    \"profile_image\": [],\n    \"services\": \"2, 4\",\n    \"description\": \"Installer and Distributor of Battery Powered Air Conditioning Systems\",\n    \"address\": \"256 Marginal St, Boston, MA, 02128\",\n    \"url\": \"https://boatrx.com/\",\n    \"phone\": \"888-466-2304\",\n    \"multi_images\": [\n        {\n            \"fieldname\": \"multi_images\",\n            \"originalname\": \"green-park-view.jpg\",\n            \"encoding\": \"7bit\",\n            \"mimetype\": \"image/jpeg\",\n            \"destination\": \"images\",\n            \"filename\": \"1691687490777.jpg\",\n            \"path\": \"images/1691687490777.jpg\",\n            \"size\": 12200168\n        },\n        {\n            \"fieldname\": \"multi_images\",\n            \"originalname\": \"gray-sofa-white-living-room-interior-with-copy-space-3d-rendering.jpg\",\n            \"encoding\": \"7bit\",\n            \"mimetype\": \"image/jpeg\",\n            \"destination\": \"images\",\n            \"filename\": \"1691687491338.jpg\",\n            \"path\": \"images/1691687491338.jpg\",\n            \"size\": 5637390\n        }\n    ],\n    \"reviews_id\": \"1, 2\",\n    \"status\": true,\n    \"updatedAt\": \"2023-08-10T17:11:31.964Z\",\n    \"createdAt\": \"2023-08-10T17:11:31.964Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-professional/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-professional",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine  Single",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "BoatRx",
+									"type": "text"
+								},
+								{
+									"key": "profile_image",
+									"type": "file",
+									"src": "/Users/user/Downloads/freepik/excavator-action.jpg"
+								},
+								{
+									"key": "services",
+									"value": "2, 4",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Installer and Distributor of Battery Powered Air Conditioning Systems",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "256 Marginal St, Boston, MA, 02128",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://boatrx.com/",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "888-466-2304",
+									"type": "text"
+								},
+								{
+									"key": "multi_images",
+									"type": "file",
+									"src": [
+										"/Users/user/Downloads/freepik/green-park-view.jpg",
+										"/Users/user/Downloads/freepik/gray-sofa-white-living-room-interior-with-copy-space-3d-rendering.jpg"
+									]
+								},
+								{
+									"key": "reviews_id",
+									"value": "1, 2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-professional/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-professional",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Delete",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbmFuU2hpcCIsInBhc3N3b3JkIjoiMTIzNDU2NzgiLCJlbWFpbCI6ImFkbmFuQGdtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJBZG5hbiIsImxhc3RfbmFtZSI6IkFiYmFzaSIsInVzZXJfdHlwZSI6ImFkbWluIiwic3Vic2NyaXB0aW9uX3R5cGUiOiJmcmVlIiwic3ViY3JpcHRpb25faWQiOjEsInVzZXJfc3RhdHVzIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoifSwiX3ByZXZpb3VzRGF0YVZhbHVlcyI6eyJpZCI6MSwidXNlcm5hbWUiOiJhZG5hblNoaXAiLCJwYXNzd29yZCI6IjEyMzQ1Njc4IiwiZW1haWwiOiJhZG5hbkBnbWFpbC5jb20iLCJmaXJzdF9uYW1lIjoiQWRuYW4iLCJsYXN0X25hbWUiOiJBYmJhc2kiLCJ1c2VyX3R5cGUiOiJhZG1pbiIsInN1YnNjcmlwdGlvbl90eXBlIjoiZnJlZSIsInN1YmNyaXB0aW9uX2lkIjoxLCJ1c2VyX3N0YXR1cyI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIn0sInVuaXFubyI6MSwiX2NoYW5nZWQiOnt9LCJfb3B0aW9ucyI6eyJpc05ld1JlY29yZCI6ZmFsc2UsIl9zY2hlbWEiOm51bGwsIl9zY2hlbWFEZWxpbWl0ZXIiOiIiLCJyYXciOnRydWUsImF0dHJpYnV0ZXMiOlsiaWQiLCJ1c2VybmFtZSIsInBhc3N3b3JkIiwiZW1haWwiLCJmaXJzdF9uYW1lIiwibGFzdF9uYW1lIiwidXNlcl90eXBlIiwic3Vic2NyaXB0aW9uX3R5cGUiLCJzdWJjcmlwdGlvbl9pZCIsInVzZXJfc3RhdHVzIiwiY3JlYXRlZEF0IiwidXBkYXRlZEF0Il19LCJpc05ld1JlY29yZCI6ZmFsc2UsImlhdCI6MTY5MjEzNjIyMiwiZXhwIjoxNjkyMTM5ODIyfQ.EdQZQvqw10b80ZQYtXVQ-tRqGuEedQYM8joLRwopjVk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "BoatRx",
+									"type": "text"
+								},
+								{
+									"key": "profile_image",
+									"type": "file",
+									"src": "/Users/user/Downloads/freepik/excavator-action.jpg"
+								},
+								{
+									"key": "services",
+									"value": "2, 4",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Installer and Distributor of Battery Powered Air Conditioning Systems",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "256 Marginal St, Boston, MA, 02128",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://boatrx.com/",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "888-466-2304",
+									"type": "text"
+								},
+								{
+									"key": "multi_images",
+									"type": "file",
+									"src": [
+										"/Users/user/Downloads/freepik/green-park-view.jpg",
+										"/Users/user/Downloads/freepik/gray-sofa-white-living-room-interior-with-copy-space-3d-rendering.jpg"
+									]
+								},
+								{
+									"key": "reviews_id",
+									"value": "1, 2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-professional/2?=",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-professional",
+								"2"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Published",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbmFuU2hpcCIsInBhc3N3b3JkIjoiMTIzNDU2NzgiLCJlbWFpbCI6ImFkbmFuQGdtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJBZG5hbiIsImxhc3RfbmFtZSI6IkFiYmFzaSIsInVzZXJfdHlwZSI6ImFkbWluIiwic3Vic2NyaXB0aW9uX3R5cGUiOiJmcmVlIiwic3ViY3JpcHRpb25faWQiOjEsInVzZXJfc3RhdHVzIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoifSwiX3ByZXZpb3VzRGF0YVZhbHVlcyI6eyJpZCI6MSwidXNlcm5hbWUiOiJhZG5hblNoaXAiLCJwYXNzd29yZCI6IjEyMzQ1Njc4IiwiZW1haWwiOiJhZG5hbkBnbWFpbC5jb20iLCJmaXJzdF9uYW1lIjoiQWRuYW4iLCJsYXN0X25hbWUiOiJBYmJhc2kiLCJ1c2VyX3R5cGUiOiJhZG1pbiIsInN1YnNjcmlwdGlvbl90eXBlIjoiZnJlZSIsInN1YmNyaXB0aW9uX2lkIjoxLCJ1c2VyX3N0YXR1cyI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIn0sInVuaXFubyI6MSwiX2NoYW5nZWQiOnt9LCJfb3B0aW9ucyI6eyJpc05ld1JlY29yZCI6ZmFsc2UsIl9zY2hlbWEiOm51bGwsIl9zY2hlbWFEZWxpbWl0ZXIiOiIiLCJyYXciOnRydWUsImF0dHJpYnV0ZXMiOlsiaWQiLCJ1c2VybmFtZSIsInBhc3N3b3JkIiwiZW1haWwiLCJmaXJzdF9uYW1lIiwibGFzdF9uYW1lIiwidXNlcl90eXBlIiwic3Vic2NyaXB0aW9uX3R5cGUiLCJzdWJjcmlwdGlvbl9pZCIsInVzZXJfc3RhdHVzIiwiY3JlYXRlZEF0IiwidXBkYXRlZEF0Il19LCJpc05ld1JlY29yZCI6ZmFsc2UsImlhdCI6MTY5MjEzNjIyMiwiZXhwIjoxNjkyMTM5ODIyfQ.EdQZQvqw10b80ZQYtXVQ-tRqGuEedQYM8joLRwopjVk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-professional/published",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-professional",
+								"published"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbmFuU2hpcCIsInBhc3N3b3JkIjoiMTIzNDU2NzgiLCJlbWFpbCI6ImFkbmFuQGdtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJBZG5hbiIsImxhc3RfbmFtZSI6IkFiYmFzaSIsInVzZXJfdHlwZSI6ImFkbWluIiwic3Vic2NyaXB0aW9uX3R5cGUiOiJmcmVlIiwic3ViY3JpcHRpb25faWQiOjEsInVzZXJfc3RhdHVzIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoifSwiX3ByZXZpb3VzRGF0YVZhbHVlcyI6eyJpZCI6MSwidXNlcm5hbWUiOiJhZG5hblNoaXAiLCJwYXNzd29yZCI6IjEyMzQ1Njc4IiwiZW1haWwiOiJhZG5hbkBnbWFpbC5jb20iLCJmaXJzdF9uYW1lIjoiQWRuYW4iLCJsYXN0X25hbWUiOiJBYmJhc2kiLCJ1c2VyX3R5cGUiOiJhZG1pbiIsInN1YnNjcmlwdGlvbl90eXBlIjoiZnJlZSIsInN1YmNyaXB0aW9uX2lkIjoxLCJ1c2VyX3N0YXR1cyI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIn0sInVuaXFubyI6MSwiX2NoYW5nZWQiOnt9LCJfb3B0aW9ucyI6eyJpc05ld1JlY29yZCI6ZmFsc2UsIl9zY2hlbWEiOm51bGwsIl9zY2hlbWFEZWxpbWl0ZXIiOiIiLCJyYXciOnRydWUsImF0dHJpYnV0ZXMiOlsiaWQiLCJ1c2VybmFtZSIsInBhc3N3b3JkIiwiZW1haWwiLCJmaXJzdF9uYW1lIiwibGFzdF9uYW1lIiwidXNlcl90eXBlIiwic3Vic2NyaXB0aW9uX3R5cGUiLCJzdWJjcmlwdGlvbl9pZCIsInVzZXJfc3RhdHVzIiwiY3JlYXRlZEF0IiwidXBkYXRlZEF0Il19LCJpc05ld1JlY29yZCI6ZmFsc2UsImlhdCI6MTY5MjEzNjIyMiwiZXhwIjoxNjkyMTM5ODIyfQ.EdQZQvqw10b80ZQYtXVQ-tRqGuEedQYM8joLRwopjVk",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-professional/all",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-professional",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Marine Partner",
+			"item": [
+				{
+					"name": "Marine   add",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbmFuU2hpcCIsInBhc3N3b3JkIjoiMTIzNDU2NzgiLCJlbWFpbCI6ImFkbmFuQGdtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJBZG5hbiIsImxhc3RfbmFtZSI6IkFiYmFzaSIsInVzZXJfdHlwZSI6ImFkbWluIiwic3Vic2NyaXB0aW9uX3R5cGUiOiJmcmVlIiwic3ViY3JpcHRpb25faWQiOjEsInVzZXJfc3RhdHVzIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoifSwiX3ByZXZpb3VzRGF0YVZhbHVlcyI6eyJpZCI6MSwidXNlcm5hbWUiOiJhZG5hblNoaXAiLCJwYXNzd29yZCI6IjEyMzQ1Njc4IiwiZW1haWwiOiJhZG5hbkBnbWFpbC5jb20iLCJmaXJzdF9uYW1lIjoiQWRuYW4iLCJsYXN0X25hbWUiOiJBYmJhc2kiLCJ1c2VyX3R5cGUiOiJhZG1pbiIsInN1YnNjcmlwdGlvbl90eXBlIjoiZnJlZSIsInN1YmNyaXB0aW9uX2lkIjoxLCJ1c2VyX3N0YXR1cyI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIn0sInVuaXFubyI6MSwiX2NoYW5nZWQiOnt9LCJfb3B0aW9ucyI6eyJpc05ld1JlY29yZCI6ZmFsc2UsIl9zY2hlbWEiOm51bGwsIl9zY2hlbWFEZWxpbWl0ZXIiOiIiLCJyYXciOnRydWUsImF0dHJpYnV0ZXMiOlsiaWQiLCJ1c2VybmFtZSIsInBhc3N3b3JkIiwiZW1haWwiLCJmaXJzdF9uYW1lIiwibGFzdF9uYW1lIiwidXNlcl90eXBlIiwic3Vic2NyaXB0aW9uX3R5cGUiLCJzdWJjcmlwdGlvbl9pZCIsInVzZXJfc3RhdHVzIiwiY3JlYXRlZEF0IiwidXBkYXRlZEF0Il19LCJpc05ld1JlY29yZCI6ZmFsc2UsImlhdCI6MTY5MjEzNjIyMiwiZXhwIjoxNjkyMTM5ODIyfQ.EdQZQvqw10b80ZQYtXVQ-tRqGuEedQYM8joLRwopjVk",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "BoatRx1",
+									"type": "text"
+								},
+								{
+									"key": "profile_image",
+									"type": "file",
+									"src": "/Users/user/Downloads/freepik/green-sofa-white-living-room-with-free-space.jpg"
+								},
+								{
+									"key": "services",
+									"value": "2, 4",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Installer and Distributor of Battery Powered Air Conditioning Systems",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "256 Marginal St, Boston, MA, 02128",
+									"type": "text"
+								},
+								{
+									"key": "longitude",
+									"value": "32423423423423",
+									"type": "text"
+								},
+								{
+									"key": "latitude",
+									"value": "54654645645646",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://boatrx.com/",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "888-466-2304",
+									"type": "text"
+								},
+								{
+									"key": "multi_images",
+									"type": "file",
+									"src": [
+										"/Users/user/Downloads/freepik/giant-building-with-sun.jpg",
+										"/Users/user/Downloads/freepik/green-park-view.jpg"
+									]
+								},
+								{
+									"key": "reviews_id",
+									"value": "1, 2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-professional/add",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-professional",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Update",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbmFuU2hpcCIsInBhc3N3b3JkIjoiMTIzNDU2NzgiLCJlbWFpbCI6ImFkbmFuQGdtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJBZG5hbiIsImxhc3RfbmFtZSI6IkFiYmFzaSIsInVzZXJfdHlwZSI6ImFkbWluIiwic3Vic2NyaXB0aW9uX3R5cGUiOiJmcmVlIiwic3ViY3JpcHRpb25faWQiOjEsInVzZXJfc3RhdHVzIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoifSwiX3ByZXZpb3VzRGF0YVZhbHVlcyI6eyJpZCI6MSwidXNlcm5hbWUiOiJhZG5hblNoaXAiLCJwYXNzd29yZCI6IjEyMzQ1Njc4IiwiZW1haWwiOiJhZG5hbkBnbWFpbC5jb20iLCJmaXJzdF9uYW1lIjoiQWRuYW4iLCJsYXN0X25hbWUiOiJBYmJhc2kiLCJ1c2VyX3R5cGUiOiJhZG1pbiIsInN1YnNjcmlwdGlvbl90eXBlIjoiZnJlZSIsInN1YmNyaXB0aW9uX2lkIjoxLCJ1c2VyX3N0YXR1cyI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIn0sInVuaXFubyI6MSwiX2NoYW5nZWQiOnt9LCJfb3B0aW9ucyI6eyJpc05ld1JlY29yZCI6ZmFsc2UsIl9zY2hlbWEiOm51bGwsIl9zY2hlbWFEZWxpbWl0ZXIiOiIiLCJyYXciOnRydWUsImF0dHJpYnV0ZXMiOlsiaWQiLCJ1c2VybmFtZSIsInBhc3N3b3JkIiwiZW1haWwiLCJmaXJzdF9uYW1lIiwibGFzdF9uYW1lIiwidXNlcl90eXBlIiwic3Vic2NyaXB0aW9uX3R5cGUiLCJzdWJjcmlwdGlvbl9pZCIsInVzZXJfc3RhdHVzIiwiY3JlYXRlZEF0IiwidXBkYXRlZEF0Il19LCJpc05ld1JlY29yZCI6ZmFsc2UsImlhdCI6MTY5MjEzNjIyMiwiZXhwIjoxNjkyMTM5ODIyfQ.EdQZQvqw10b80ZQYtXVQ-tRqGuEedQYM8joLRwopjVk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"BoatRx\",\n    \"profile_image\": [],\n    \"services\": \"2, 4\",\n    \"description\": \"Installer and Distributor of Battery Powered Air Conditioning Systems\",\n    \"address\": \"256 Marginal St, Boston, MA, 02128\",\n    \"url\": \"https://boatrx.com/\",\n    \"phone\": \"888-466-2304\",\n    \"multi_images\": [\n        {\n            \"fieldname\": \"multi_images\",\n            \"originalname\": \"green-park-view.jpg\",\n            \"encoding\": \"7bit\",\n            \"mimetype\": \"image/jpeg\",\n            \"destination\": \"images\",\n            \"filename\": \"1691687490777.jpg\",\n            \"path\": \"images/1691687490777.jpg\",\n            \"size\": 12200168\n        },\n        {\n            \"fieldname\": \"multi_images\",\n            \"originalname\": \"gray-sofa-white-living-room-interior-with-copy-space-3d-rendering.jpg\",\n            \"encoding\": \"7bit\",\n            \"mimetype\": \"image/jpeg\",\n            \"destination\": \"images\",\n            \"filename\": \"1691687491338.jpg\",\n            \"path\": \"images/1691687491338.jpg\",\n            \"size\": 5637390\n        }\n    ],\n    \"reviews_id\": \"1, 2\",\n    \"status\": true,\n    \"updatedAt\": \"2023-08-10T17:11:31.964Z\",\n    \"createdAt\": \"2023-08-10T17:11:31.964Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-professional/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-professional",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine  Single",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "BoatRx",
+									"type": "text"
+								},
+								{
+									"key": "profile_image",
+									"type": "file",
+									"src": "/Users/user/Downloads/freepik/excavator-action.jpg"
+								},
+								{
+									"key": "services",
+									"value": "2, 4",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Installer and Distributor of Battery Powered Air Conditioning Systems",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "256 Marginal St, Boston, MA, 02128",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://boatrx.com/",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "888-466-2304",
+									"type": "text"
+								},
+								{
+									"key": "multi_images",
+									"type": "file",
+									"src": [
+										"/Users/user/Downloads/freepik/green-park-view.jpg",
+										"/Users/user/Downloads/freepik/gray-sofa-white-living-room-interior-with-copy-space-3d-rendering.jpg"
+									]
+								},
+								{
+									"key": "reviews_id",
+									"value": "1, 2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-professional/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-professional",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Delete",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbmFuU2hpcCIsInBhc3N3b3JkIjoiMTIzNDU2NzgiLCJlbWFpbCI6ImFkbmFuQGdtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJBZG5hbiIsImxhc3RfbmFtZSI6IkFiYmFzaSIsInVzZXJfdHlwZSI6ImFkbWluIiwic3Vic2NyaXB0aW9uX3R5cGUiOiJmcmVlIiwic3ViY3JpcHRpb25faWQiOjEsInVzZXJfc3RhdHVzIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoifSwiX3ByZXZpb3VzRGF0YVZhbHVlcyI6eyJpZCI6MSwidXNlcm5hbWUiOiJhZG5hblNoaXAiLCJwYXNzd29yZCI6IjEyMzQ1Njc4IiwiZW1haWwiOiJhZG5hbkBnbWFpbC5jb20iLCJmaXJzdF9uYW1lIjoiQWRuYW4iLCJsYXN0X25hbWUiOiJBYmJhc2kiLCJ1c2VyX3R5cGUiOiJhZG1pbiIsInN1YnNjcmlwdGlvbl90eXBlIjoiZnJlZSIsInN1YmNyaXB0aW9uX2lkIjoxLCJ1c2VyX3N0YXR1cyI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIn0sInVuaXFubyI6MSwiX2NoYW5nZWQiOnt9LCJfb3B0aW9ucyI6eyJpc05ld1JlY29yZCI6ZmFsc2UsIl9zY2hlbWEiOm51bGwsIl9zY2hlbWFEZWxpbWl0ZXIiOiIiLCJyYXciOnRydWUsImF0dHJpYnV0ZXMiOlsiaWQiLCJ1c2VybmFtZSIsInBhc3N3b3JkIiwiZW1haWwiLCJmaXJzdF9uYW1lIiwibGFzdF9uYW1lIiwidXNlcl90eXBlIiwic3Vic2NyaXB0aW9uX3R5cGUiLCJzdWJjcmlwdGlvbl9pZCIsInVzZXJfc3RhdHVzIiwiY3JlYXRlZEF0IiwidXBkYXRlZEF0Il19LCJpc05ld1JlY29yZCI6ZmFsc2UsImlhdCI6MTY5MjEzNjIyMiwiZXhwIjoxNjkyMTM5ODIyfQ.EdQZQvqw10b80ZQYtXVQ-tRqGuEedQYM8joLRwopjVk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "BoatRx",
+									"type": "text"
+								},
+								{
+									"key": "profile_image",
+									"type": "file",
+									"src": "/Users/user/Downloads/freepik/excavator-action.jpg"
+								},
+								{
+									"key": "services",
+									"value": "2, 4",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Installer and Distributor of Battery Powered Air Conditioning Systems",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "256 Marginal St, Boston, MA, 02128",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://boatrx.com/",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "888-466-2304",
+									"type": "text"
+								},
+								{
+									"key": "multi_images",
+									"type": "file",
+									"src": [
+										"/Users/user/Downloads/freepik/green-park-view.jpg",
+										"/Users/user/Downloads/freepik/gray-sofa-white-living-room-interior-with-copy-space-3d-rendering.jpg"
+									]
+								},
+								{
+									"key": "reviews_id",
+									"value": "1, 2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-professional/2?=",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-professional",
+								"2"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Published",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbmFuU2hpcCIsInBhc3N3b3JkIjoiMTIzNDU2NzgiLCJlbWFpbCI6ImFkbmFuQGdtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJBZG5hbiIsImxhc3RfbmFtZSI6IkFiYmFzaSIsInVzZXJfdHlwZSI6ImFkbWluIiwic3Vic2NyaXB0aW9uX3R5cGUiOiJmcmVlIiwic3ViY3JpcHRpb25faWQiOjEsInVzZXJfc3RhdHVzIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoifSwiX3ByZXZpb3VzRGF0YVZhbHVlcyI6eyJpZCI6MSwidXNlcm5hbWUiOiJhZG5hblNoaXAiLCJwYXNzd29yZCI6IjEyMzQ1Njc4IiwiZW1haWwiOiJhZG5hbkBnbWFpbC5jb20iLCJmaXJzdF9uYW1lIjoiQWRuYW4iLCJsYXN0X25hbWUiOiJBYmJhc2kiLCJ1c2VyX3R5cGUiOiJhZG1pbiIsInN1YnNjcmlwdGlvbl90eXBlIjoiZnJlZSIsInN1YmNyaXB0aW9uX2lkIjoxLCJ1c2VyX3N0YXR1cyI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIn0sInVuaXFubyI6MSwiX2NoYW5nZWQiOnt9LCJfb3B0aW9ucyI6eyJpc05ld1JlY29yZCI6ZmFsc2UsIl9zY2hlbWEiOm51bGwsIl9zY2hlbWFEZWxpbWl0ZXIiOiIiLCJyYXciOnRydWUsImF0dHJpYnV0ZXMiOlsiaWQiLCJ1c2VybmFtZSIsInBhc3N3b3JkIiwiZW1haWwiLCJmaXJzdF9uYW1lIiwibGFzdF9uYW1lIiwidXNlcl90eXBlIiwic3Vic2NyaXB0aW9uX3R5cGUiLCJzdWJjcmlwdGlvbl9pZCIsInVzZXJfc3RhdHVzIiwiY3JlYXRlZEF0IiwidXBkYXRlZEF0Il19LCJpc05ld1JlY29yZCI6ZmFsc2UsImlhdCI6MTY5MjEzNjIyMiwiZXhwIjoxNjkyMTM5ODIyfQ.EdQZQvqw10b80ZQYtXVQ-tRqGuEedQYM8joLRwopjVk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-professional/published",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-professional",
+								"published"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbmFuU2hpcCIsInBhc3N3b3JkIjoiMTIzNDU2NzgiLCJlbWFpbCI6ImFkbmFuQGdtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJBZG5hbiIsImxhc3RfbmFtZSI6IkFiYmFzaSIsInVzZXJfdHlwZSI6ImFkbWluIiwic3Vic2NyaXB0aW9uX3R5cGUiOiJmcmVlIiwic3ViY3JpcHRpb25faWQiOjEsInVzZXJfc3RhdHVzIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoifSwiX3ByZXZpb3VzRGF0YVZhbHVlcyI6eyJpZCI6MSwidXNlcm5hbWUiOiJhZG5hblNoaXAiLCJwYXNzd29yZCI6IjEyMzQ1Njc4IiwiZW1haWwiOiJhZG5hbkBnbWFpbC5jb20iLCJmaXJzdF9uYW1lIjoiQWRuYW4iLCJsYXN0X25hbWUiOiJBYmJhc2kiLCJ1c2VyX3R5cGUiOiJhZG1pbiIsInN1YnNjcmlwdGlvbl90eXBlIjoiZnJlZSIsInN1YmNyaXB0aW9uX2lkIjoxLCJ1c2VyX3N0YXR1cyI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIn0sInVuaXFubyI6MSwiX2NoYW5nZWQiOnt9LCJfb3B0aW9ucyI6eyJpc05ld1JlY29yZCI6ZmFsc2UsIl9zY2hlbWEiOm51bGwsIl9zY2hlbWFEZWxpbWl0ZXIiOiIiLCJyYXciOnRydWUsImF0dHJpYnV0ZXMiOlsiaWQiLCJ1c2VybmFtZSIsInBhc3N3b3JkIiwiZW1haWwiLCJmaXJzdF9uYW1lIiwibGFzdF9uYW1lIiwidXNlcl90eXBlIiwic3Vic2NyaXB0aW9uX3R5cGUiLCJzdWJjcmlwdGlvbl9pZCIsInVzZXJfc3RhdHVzIiwiY3JlYXRlZEF0IiwidXBkYXRlZEF0Il19LCJpc05ld1JlY29yZCI6ZmFsc2UsImlhdCI6MTY5MjEzNjIyMiwiZXhwIjoxNjkyMTM5ODIyfQ.EdQZQvqw10b80ZQYtXVQ-tRqGuEedQYM8joLRwopjVk",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-professional/all",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-professional",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Marine Professionals Category",
+			"item": [
+				{
+					"name": "Marine Category add",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Engine",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/user/Downloads/shipshape/images/engine.png"
+								},
+								{
+									"key": "description",
+									"value": "Ship engine",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-category/add",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-category",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Category Update",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Engine\",\n    \"image\": \"images/1691699942792.png\",\n    \"description\": \"Ship engine\",\n    \"status\": true,\n    \"updatedAt\": \"2023-08-10T20:39:02.805Z\",\n    \"createdAt\": \"2023-08-10T20:39:02.805Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-category/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Category Single",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "BoatRx",
+									"type": "text"
+								},
+								{
+									"key": "profile_image",
+									"type": "file",
+									"src": "/Users/user/Downloads/freepik/excavator-action.jpg"
+								},
+								{
+									"key": "services",
+									"value": "2, 4",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Installer and Distributor of Battery Powered Air Conditioning Systems",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "256 Marginal St, Boston, MA, 02128",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://boatrx.com/",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "888-466-2304",
+									"type": "text"
+								},
+								{
+									"key": "multi_images",
+									"type": "file",
+									"src": [
+										"/Users/user/Downloads/freepik/green-park-view.jpg",
+										"/Users/user/Downloads/freepik/gray-sofa-white-living-room-interior-with-copy-space-3d-rendering.jpg"
+									]
+								},
+								{
+									"key": "reviews_id",
+									"value": "1, 2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-category/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Category Delete",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "BoatRx",
+									"type": "text"
+								},
+								{
+									"key": "profile_image",
+									"type": "file",
+									"src": "/Users/user/Downloads/freepik/excavator-action.jpg"
+								},
+								{
+									"key": "services",
+									"value": "2, 4",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Installer and Distributor of Battery Powered Air Conditioning Systems",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "256 Marginal St, Boston, MA, 02128",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://boatrx.com/",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "888-466-2304",
+									"type": "text"
+								},
+								{
+									"key": "multi_images",
+									"type": "file",
+									"src": [
+										"/Users/user/Downloads/freepik/green-park-view.jpg",
+										"/Users/user/Downloads/freepik/gray-sofa-white-living-room-interior-with-copy-space-3d-rendering.jpg"
+									]
+								},
+								{
+									"key": "reviews_id",
+									"value": "1, 2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-category/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Category Published",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-category/published",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-category",
+								"published"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Category list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-category/all",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-category",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Marine Professionals Service",
+			"item": [
+				{
+					"name": "Marine Service add",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Inboard",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/user/Downloads/shipshape/images/engine.png"
+								},
+								{
+									"key": "description",
+									"value": "Inboard Services",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-service/add",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-service",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Service Update",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Inboards\",\n    \"image\": \"images/1691702320370.png\",\n    \"description\": \"Inboard Services\",\n    \"category_id\": \"1\",\n    \"status\": true,\n    \"updatedAt\": \"2023-08-10T21:18:40.375Z\",\n    \"createdAt\": \"2023-08-10T21:18:40.375Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080api/marine-service/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080api",
+							"path": [
+								"marine-service",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Service Single",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "BoatRx",
+									"type": "text"
+								},
+								{
+									"key": "profile_image",
+									"type": "file",
+									"src": "/Users/user/Downloads/freepik/excavator-action.jpg"
+								},
+								{
+									"key": "services",
+									"value": "2, 4",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Installer and Distributor of Battery Powered Air Conditioning Systems",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "256 Marginal St, Boston, MA, 02128",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://boatrx.com/",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "888-466-2304",
+									"type": "text"
+								},
+								{
+									"key": "multi_images",
+									"type": "file",
+									"src": [
+										"/Users/user/Downloads/freepik/green-park-view.jpg",
+										"/Users/user/Downloads/freepik/gray-sofa-white-living-room-interior-with-copy-space-3d-rendering.jpg"
+									]
+								},
+								{
+									"key": "reviews_id",
+									"value": "1, 2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-service/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-service",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Service Delete",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "BoatRx",
+									"type": "text"
+								},
+								{
+									"key": "profile_image",
+									"type": "file",
+									"src": "/Users/user/Downloads/freepik/excavator-action.jpg"
+								},
+								{
+									"key": "services",
+									"value": "2, 4",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Installer and Distributor of Battery Powered Air Conditioning Systems",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "256 Marginal St, Boston, MA, 02128",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://boatrx.com/",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "888-466-2304",
+									"type": "text"
+								},
+								{
+									"key": "multi_images",
+									"type": "file",
+									"src": [
+										"/Users/user/Downloads/freepik/green-park-view.jpg",
+										"/Users/user/Downloads/freepik/gray-sofa-white-living-room-interior-with-copy-space-3d-rendering.jpg"
+									]
+								},
+								{
+									"key": "reviews_id",
+									"value": "1, 2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-service/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-service",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Service Published",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-service/published",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-service",
+								"published"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Service list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-service/all",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-service",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Marine Professionals Brands",
+			"item": [
+				{
+					"name": "Marine Brands add",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Cummins",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/Users/user/Downloads/shipshape/images/engine.png"
+								},
+								{
+									"key": "description",
+									"value": "Cummins Brand",
+									"type": "text"
+								},
+								{
+									"key": "service_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-brands/add",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-brands",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Brands Update",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Cummin\",\n    \"image\": \"images/1691703179367.png\",\n    \"description\": \"Cummins Brand\",\n    \"service_id\": \"1\",\n    \"status\": true,\n    \"updatedAt\": \"2023-08-10T21:32:59.374Z\",\n    \"createdAt\": \"2023-08-10T21:32:59.374Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-brands/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-brands",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Brands Single",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "BoatRx",
+									"type": "text"
+								},
+								{
+									"key": "profile_image",
+									"type": "file",
+									"src": "/Users/user/Downloads/freepik/excavator-action.jpg"
+								},
+								{
+									"key": "services",
+									"value": "2, 4",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Installer and Distributor of Battery Powered Air Conditioning Systems",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "256 Marginal St, Boston, MA, 02128",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://boatrx.com/",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "888-466-2304",
+									"type": "text"
+								},
+								{
+									"key": "multi_images",
+									"type": "file",
+									"src": [
+										"/Users/user/Downloads/freepik/green-park-view.jpg",
+										"/Users/user/Downloads/freepik/gray-sofa-white-living-room-interior-with-copy-space-3d-rendering.jpg"
+									]
+								},
+								{
+									"key": "reviews_id",
+									"value": "1, 2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-brands/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-brands",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Brands Delete",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "BoatRx",
+									"type": "text"
+								},
+								{
+									"key": "profile_image",
+									"type": "file",
+									"src": "/Users/user/Downloads/freepik/excavator-action.jpg"
+								},
+								{
+									"key": "services",
+									"value": "2, 4",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Installer and Distributor of Battery Powered Air Conditioning Systems",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "256 Marginal St, Boston, MA, 02128",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://boatrx.com/",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "888-466-2304",
+									"type": "text"
+								},
+								{
+									"key": "multi_images",
+									"type": "file",
+									"src": [
+										"/Users/user/Downloads/freepik/green-park-view.jpg",
+										"/Users/user/Downloads/freepik/gray-sofa-white-living-room-interior-with-copy-space-3d-rendering.jpg"
+									]
+								},
+								{
+									"key": "reviews_id",
+									"value": "1, 2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-brands/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-brands",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Brands Published",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-brands/published",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-brands",
+								"published"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Brands list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/marine-brands/all",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"marine-brands",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Coupon",
+			"item": [
+				{
+					"name": "Marine Brands add",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImlkIjoxLCJ1c2VybmFtZSI6ImFkbmFuU2hpcCIsInBhc3N3b3JkIjoiMTIzNDU2NzgiLCJlbWFpbCI6ImFkbmFuQGdtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJBZG5hbiIsImxhc3RfbmFtZSI6IkFiYmFzaSIsInVzZXJfdHlwZSI6ImFkbWluIiwic3Vic2NyaXB0aW9uX3R5cGUiOiJmcmVlIiwic3ViY3JpcHRpb25faWQiOjEsInVzZXJfc3RhdHVzIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTA4LTAyVDEyOjIwOjU0LjAwMFoifSwiX3ByZXZpb3VzRGF0YVZhbHVlcyI6eyJpZCI6MSwidXNlcm5hbWUiOiJhZG5hblNoaXAiLCJwYXNzd29yZCI6IjEyMzQ1Njc4IiwiZW1haWwiOiJhZG5hbkBnbWFpbC5jb20iLCJmaXJzdF9uYW1lIjoiQWRuYW4iLCJsYXN0X25hbWUiOiJBYmJhc2kiLCJ1c2VyX3R5cGUiOiJhZG1pbiIsInN1YnNjcmlwdGlvbl90eXBlIjoiZnJlZSIsInN1YmNyaXB0aW9uX2lkIjoxLCJ1c2VyX3N0YXR1cyI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMy0wOC0wMlQxMjoyMDo1NC4wMDBaIn0sInVuaXFubyI6MSwiX2NoYW5nZWQiOnt9LCJfb3B0aW9ucyI6eyJpc05ld1JlY29yZCI6ZmFsc2UsIl9zY2hlbWEiOm51bGwsIl9zY2hlbWFEZWxpbWl0ZXIiOiIiLCJyYXciOnRydWUsImF0dHJpYnV0ZXMiOlsiaWQiLCJ1c2VybmFtZSIsInBhc3N3b3JkIiwiZW1haWwiLCJmaXJzdF9uYW1lIiwibGFzdF9uYW1lIiwidXNlcl90eXBlIiwic3Vic2NyaXB0aW9uX3R5cGUiLCJzdWJjcmlwdGlvbl9pZCIsInVzZXJfc3RhdHVzIiwiY3JlYXRlZEF0IiwidXBkYXRlZEF0Il19LCJpc05ld1JlY29yZCI6ZmFsc2UsImlhdCI6MTY5MjEzNjIyMiwiZXhwIjoxNjkyMTM5ODIyfQ.EdQZQvqw10b80ZQYtXVQ-tRqGuEedQYM8joLRwopjVk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"discount18\",\n    \"coupon_type\": \"christmas\",\n    \"expiry\": \"2023-10-1 23:59:59\",\n    \"status\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/coupon/add",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"coupon",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Brands Update",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"code\": \"Discount30\",\n    \"coupon_type\": \"christmas\",\n    \"expiry\": \"2023-10-01T18:59:59.000Z\",\n    \"status\": true,\n    \"updatedAt\": \"2023-08-10T22:09:24.543Z\",\n    \"createdAt\": \"2023-08-10T22:09:24.543Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/coupon/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"coupon",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Brands Single",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "BoatRx",
+									"type": "text"
+								},
+								{
+									"key": "profile_image",
+									"type": "file",
+									"src": "/Users/user/Downloads/freepik/excavator-action.jpg"
+								},
+								{
+									"key": "services",
+									"value": "2, 4",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Installer and Distributor of Battery Powered Air Conditioning Systems",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "256 Marginal St, Boston, MA, 02128",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://boatrx.com/",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "888-466-2304",
+									"type": "text"
+								},
+								{
+									"key": "multi_images",
+									"type": "file",
+									"src": [
+										"/Users/user/Downloads/freepik/green-park-view.jpg",
+										"/Users/user/Downloads/freepik/gray-sofa-white-living-room-interior-with-copy-space-3d-rendering.jpg"
+									]
+								},
+								{
+									"key": "reviews_id",
+									"value": "1, 2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/coupon/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"coupon",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Brands Delete",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "BoatRx",
+									"type": "text"
+								},
+								{
+									"key": "profile_image",
+									"type": "file",
+									"src": "/Users/user/Downloads/freepik/excavator-action.jpg"
+								},
+								{
+									"key": "services",
+									"value": "2, 4",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Installer and Distributor of Battery Powered Air Conditioning Systems",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "256 Marginal St, Boston, MA, 02128",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://boatrx.com/",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "888-466-2304",
+									"type": "text"
+								},
+								{
+									"key": "multi_images",
+									"type": "file",
+									"src": [
+										"/Users/user/Downloads/freepik/green-park-view.jpg",
+										"/Users/user/Downloads/freepik/gray-sofa-white-living-room-interior-with-copy-space-3d-rendering.jpg"
+									]
+								},
+								{
+									"key": "reviews_id",
+									"value": "1, 2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/coupon/10",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"coupon",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Brands Published",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/coupon/published",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"coupon",
+								"published"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Brands list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/coupon/all",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"coupon",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Podcast",
+			"item": [
+				{
+					"name": "Marine Podcast add",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "VOICE OF THE OCEANS 4",
+									"type": "text"
+								},
+								{
+									"key": "media_file",
+									"type": "file",
+									"src": "/Users/user/Downloads/Georgia-Interview-edited-with-BGM-1.mp3"
+								},
+								{
+									"key": "description",
+									"value": "VOICE OF THE OCEANS (Part 2): The fantastical family adventures of Wilhelm Schurmann",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/podcast/add",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"podcast",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Podcast Update",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"VOICE OF THE OCEANS\",\n    \"media_file\": \"\",\n    \"description\": \"Part 1\",\n    \"status\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/podcast/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"podcast",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Podcast Single",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "BoatRx",
+									"type": "text"
+								},
+								{
+									"key": "profile_image",
+									"type": "file",
+									"src": "/Users/user/Downloads/freepik/excavator-action.jpg"
+								},
+								{
+									"key": "services",
+									"value": "2, 4",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Installer and Distributor of Battery Powered Air Conditioning Systems",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "256 Marginal St, Boston, MA, 02128",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://boatrx.com/",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "888-466-2304",
+									"type": "text"
+								},
+								{
+									"key": "multi_images",
+									"type": "file",
+									"src": [
+										"/Users/user/Downloads/freepik/green-park-view.jpg",
+										"/Users/user/Downloads/freepik/gray-sofa-white-living-room-interior-with-copy-space-3d-rendering.jpg"
+									]
+								},
+								{
+									"key": "reviews_id",
+									"value": "1, 2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/podcast/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"podcast",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Podcast Delete",
+					"protocolProfileBehavior": {
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "BoatRx",
+									"type": "text"
+								},
+								{
+									"key": "profile_image",
+									"type": "file",
+									"src": "/Users/user/Downloads/freepik/excavator-action.jpg"
+								},
+								{
+									"key": "services",
+									"value": "2, 4",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Installer and Distributor of Battery Powered Air Conditioning Systems",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "256 Marginal St, Boston, MA, 02128",
+									"type": "text"
+								},
+								{
+									"key": "url",
+									"value": "https://boatrx.com/",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "888-466-2304",
+									"type": "text"
+								},
+								{
+									"key": "multi_images",
+									"type": "file",
+									"src": [
+										"/Users/user/Downloads/freepik/green-park-view.jpg",
+										"/Users/user/Downloads/freepik/gray-sofa-white-living-room-interior-with-copy-space-3d-rendering.jpg"
+									]
+								},
+								{
+									"key": "reviews_id",
+									"value": "1, 2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/podcast/1",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"podcast",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Podcast Published",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/podcast/published",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"podcast",
+								"published"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Marine Podcast list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"followOriginalHttpMethod": false
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://34.254.97.212:8080/api/podcast/all",
+							"protocol": "http",
+							"host": [
+								"34",
+								"254",
+								"97",
+								"212"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"podcast",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"followOriginalHttpMethod": false
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Shipshape Blog 3\",\n    \"author_id\": 2,\n    \"name\": \"Shipshape Blog 3\",\n    \"category_id\": 1,\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis est vitae ante commodo imperdiet et in sem. Aliquam pretium vitae sem in porta. Sed aliquet egestas turpis nec finibus.\",\n    \"blog_image\": \"blog_img2.png\",\n    \"post_mime_type\": \"png\",\n    \"status\": true\n}\n\n\n// {\n//     \"name\": \"Gray Ship\",\n//     \"logo\": \"grayship.png\",\n//     \"url\": \"www.grayship.com\",\n//     \"status\": true\n// }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "Shipshape_API/New RequestSavehttp://localhost:8080/api/blogs/allblogSendParamsAuthorizationHeaders(8)BodyPre-request ScriptTestsSettingsCookiesnoneform-datax-www-form-urlencodedrawbinaryGraphQLJSONBeautifyThis request does not have a bodyKeyValueDescriptionBulk EditKeyTextValueDescriptionKeyValueDescriptionBulk EditKeyValueDescription36910111213141516845712····\"author_id\":·2,····\"content\":·\"Lorem·ipsum·dolor·sit·amet,·consectetur·adipiscing·elit.·Sed·quis·est·vitae·ante·commodo·imperdiet·et·in·sem.·Aliquam·pretium·vitae·sem·in·····\"status\":·true}  //·{//·····\"name\":·\"Gray·Ship\",//·····\"logo\":·\"grayship.png\",//·····\"url\":·\"www.grayship.com\",····\"post_mime_type\":·\"png\",        porta.·Sed·aliquet·egestas·turpis·nec·finibus.\",····\"name\":·\"Shipshape·Blog·3\",····\"category_id\":·1,····\"blog_image\":·\"blog_img2.png\",{····\"title\":·\"Shipshape·Blog·3\",Select FileQUERY1 GRAPHQL VARIABLES1 BodyCookiesHeaders(9)Test ResultsStatus:200OKTime:81 msSize:1.58 KBSave as ExamplePrettyRawPreviewVisualizeJSON16123456789101112131415        \"id\": 2,[    {        \"id\": 1,        \"title\": \"Shipshape Blog 1\",        \"author_id\": 3,        \"name\": \"www.grayship.com\",        \"category_id\": 2,        \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis est vitae ante commodo imperdiet et in sem. Aliquam pretium vitae sem in             porta. Sed aliquet egestas turpis nec finibus.\",        \"blog_image\": \"www.grayship.com\",        \"post_mime_type\": \"www.grayship.com\",        \"status\": true,        \"createdAt\": \"2023-08-03T14:12:19.000Z\",        \"updatedAt\": \"2023-08-03T14:12:19.000Z\"    },    {",
+					"protocol": "Shipshape_API/New RequestSavehttp",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"blogs",
+						"allblogSendParamsAuthorizationHeaders(8)BodyPre-request ScriptTestsSettingsCookiesnoneform-datax-www-form-urlencodedrawbinaryGraphQLJSONBeautifyThis request does not have a bodyKeyValueDescriptionBulk EditKeyTextValueDescriptionKeyValueDescriptionBulk EditKeyValueDescription36910111213141516845712····\"author_id\":·2,····\"content\":·\"Lorem·ipsum·dolor·sit·amet,·consectetur·adipiscing·elit.·Sed·quis·est·vitae·ante·commodo·imperdiet·et·in·sem.·Aliquam·pretium·vitae·sem·in·····\"status\":·true}  ",
+						"",
+						"·{",
+						"",
+						"·····\"name\":·\"Gray·Ship\",",
+						"",
+						"·····\"logo\":·\"grayship.png\",",
+						"",
+						"·····\"url\":·\"www.grayship.com\",····\"post_mime_type\":·\"png\",        porta.·Sed·aliquet·egestas·turpis·nec·finibus.\",····\"name\":·\"Shipshape·Blog·3\",····\"category_id\":·1,····\"blog_image\":·\"blog_img2.png\",{····\"title\":·\"Shipshape·Blog·3\",Select FileQUERY1 GRAPHQL VARIABLES1 BodyCookiesHeaders(9)Test ResultsStatus:200OKTime:81 msSize:1.58 KBSave as ExamplePrettyRawPreviewVisualizeJSON16123456789101112131415        \"id\": 2,[    {        \"id\": 1,        \"title\": \"Shipshape Blog 1\",        \"author_id\": 3,        \"name\": \"www.grayship.com\",        \"category_id\": 2,        \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis est vitae ante commodo imperdiet et in sem. Aliquam pretium vitae sem in             porta. Sed aliquet egestas turpis nec finibus.\",        \"blog_image\": \"www.grayship.com\",        \"post_mime_type\": \"www.grayship.com\",        \"status\": true,        \"createdAt\": \"2023-08-03T14:12:19.000Z\",        \"updatedAt\": \"2023-08-03T14:12:19.000Z\"    },    {"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
