@@ -27,7 +27,7 @@ const Professional = () => {
                     <div className="custom-media">
                       <div className="media">
                         <div className="media-left">
-                          <img src="../../images/safety.png" className="media-object" />
+                          <img src="../../images/safety.png" className="media-object" alt="" />
                         </div>
                             <div className="media-body">
                               <h6>BoatRx<sub>PRO</sub></h6>

@@ -48,17 +48,17 @@ const SignUpPopup = () => {
                         <h5>Sign me up as a</h5>
                         
                         <div className="pop-submit-button" data-value="">                       
-                            <a to="#" id="submit" className="btn-popup" data-value="boater">
+                            <a href="!#" id="submit" className="btn-popup" data-value="boater">
                                 <img src="../../images/icons/boat.png" data-value="boater" alt="business" /><br/>Boater</a>
 
-                            <a to="#" id="csubmit" className="btn-popup" data-value="contractor">
+                            <a href="!#" id="csubmit" className="btn-popup" data-value="contractor">
                                  <img src="../../images/icons/screw-driver.png" data-value="contractor" alt="business" /><br/>Business</a>
                         </div>
                        
                     </div>
                 </form>
                
-                <a className='google-log' to="/">
+                <a className='google-log' herf="!#">
                     <img src="../../images/icons/google-icon.png" alt="" /> 
                     Continue with Google
                 </a>

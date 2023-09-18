@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Search from "./Search";
 import { Link } from 'react-router-dom'
+import { getValue } from "@testing-library/user-event/dist/utils";
 
 function Header() {
+  const [token, setToken] = useState();
+  // const apiKey =localStorage.getItem("token");
+  const logoutHandle = () => {
+    setToken(localStorage.setItem("token", ""))
+    if(token==""){
+      window.location.reload(true);
+    }
+  };
+
+  useEffect(() => {
+    setToken(localStorage.getItem("token"))
+  }, [])
+
   return (
       <div className="container-fluid">
         <nav className="navbar navbar-expand-lg navi_shipshape">
@@ -40,16 +54,24 @@ function Header() {
                     Podcast
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/signup">
-                    Sign Up 
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/login">
-                    Login 
-                  </Link>
-                </li>
+
+                {!token ? (
+                      <>
+                        <li className="nav-item">
+                          <Link className="nav-link" to="/signup">Sign Up</Link>
+                        </li>
+                        <li className="nav-item">
+                          <Link className="nav-link" to="/login">Login </Link>
+                        </li>
+                      </>
+                    ) : (
+                      <>
+                        <li className="nav-item"><Link className="nav-link">welcome Tomy</Link></li>
+                        <li className="nav-item"> <Link className="nav-link" to="" onClick={logoutHandle}>Logout </Link></li>
+                      </>
+                    )
+                }
+                
               </ul>
             </div>
           </div>

@@ -1,64 +1,203 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom';
+import axios from 'axios'
 
-const marine = () => {
+const Marine = () => {
+    // const [category, setCategory] = useParams('category');
+    // const [address, setAddress] = useParams('location');
+
+    // useEffect (() => {
+    //     let category = useParams('category')
+    //     let address = useParams('location')
+
+    //     // setCategory(cat)
+    //     // setAddress(add)
+
+    //     console.log(category, address)
+    //     // return
+    //     axios.get('http://34.254.97.212:8080/api/marine-professional/search/'+category+"/"+address).then((res) => {
+    //         console.log(res)
+    //     })
+    // }, [])
+
+    const { category, location } = useParams();
+    const [marine, setMarine] = useState([]);
+    // const [filterList, setFilterList] =  useState([]);
+    // const [searchList, setSearchList] =  useState([]);
+    const [marineCat, setMarineCat] = useState([]);
+
+
+    useEffect(() => {
+        console.log(category, location);
+
+        // axios.get(`http://34.254.97.212:8080/api/marine-professional/search/${category}/${location}`)
+        axios.get(`http://34.254.97.212:8080/api/marine-professional/all`)
+        .then((res) => {
+            console.log(res.data); // Assuming you want to log the response data
+            setMarine(res.data)
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+
+        axios.get('http://34.254.97.212:8080/api/marine-category/all').then((res) => {
+            console.log("cat", res.data)
+            setMarineCat(res.data)
+        })
+
+    }, [category, location]);
+
+    
+
+
   return (
     <div className='container-fluid'>
         <div className="row marine--main">
             <p className='search_count'>9 results </p>
+
             <div className="col-lg-2 col-md-3">
                 <div className='main-category--form'>
                     <form>
-                     <div className="custom-checkbox">
-                        <input type="checkbox" name="checkbox1" id="shipshapepro" /><label for="shipshapepro" >SHIPSHAPE PROs only</label>
-                    </div>
-                    <button className='self-filter'>Apply</button>
-                    <div className='category-lst'>
-                    <div className="accordion" id="myAccordion">
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingOne">
-                                <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne">Engine</button>									
-                            </h2>
-                            <div id="collapseOne" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                <div className="card-body">
-                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
-                                        <div className="subcategory_lst">
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="westerbeke" /><label for="westerbeke">Westerbeke</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="crusader" /><label for="crusader">Crusader</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="detriot" /><label for="detriot">Detriot</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="indmar" /><label for="indmar">Indmar</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="yanmar" /><label for="yanmar">Yanmar</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="perkins" /><label for="perkins">Perkins</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
-                                        </div>
-                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
-                                        <div className="subcategory_lst">
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="custom-checkbox">
+                            <input type="checkbox" name="checkbox1" id="shipshapepro" /><label for="shipshapepro" >SHIPSHAPE PROs only</label>
                         </div>
+
+                        <button className='self-filter'>Apply</button>
                         
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingTwo">
-                                <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo">Electrical</button>                     
-                            </h2>
-                            <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                                <div className="card-body">
-                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="proonly" /><label for="proonly">SHIPSHAPE PROs only</label></div>
-                            
-                                        <div className="subcategory_lst">
+                        <div className='category-lst'>
+                            <div className="accordion" id="myAccordion">
+                                {/* <div className="accordion-item">
+                                    <h2 className="accordion-header" id="headingOne">
+                                        <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne">Engine</button>									
+                                    </h2>
+                                    <div id="collapseOne" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                        <div className="card-body">
+                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
+                                                <div className="subcategory_lst">
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="westerbeke" /><label for="westerbeke">Westerbeke</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="crusader" /><label for="crusader">Crusader</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="detriot" /><label for="detriot">Detriot</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="indmar" /><label for="indmar">Indmar</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="yanmar" /><label for="yanmar">Yanmar</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="perkins" /><label for="perkins">Perkins</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
+                                                </div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
+                                                <div className="subcategory_lst">
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div className="accordion-item">
+                                    <h2 className="accordion-header" id="headingTwo">
+                                        <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo">Electrical</button>                     
+                                    </h2>
+                                    <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                        <div className="card-body">
+                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="proonly" /><label for="proonly">SHIPSHAPE PROs only</label></div>
+                                    
+                                                <div className="subcategory_lst">
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="westerbeke" /><label for="westerbeke">Westerbeke</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="crusader" /><label for="crusader">Crusader</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="detriot" /><label for="detriot">Detriot</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="indmar" /><label for="indmar">Indmar</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="yanmar" /><label for="yanmar">Yanmar</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="perkins" /><label for="perkins">Perkins</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
+                                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
+                                                </div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
+                                                <div className="subcategory_lst">
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="accordion-item">
+                                    <h2 className="accordion-header" id="headingThree">
+                                        <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree">Plumbing</button>                     
+                                    </h2>
+
+                                    <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                        <div className="card-body">
+                                            <div className="custom-checkbox">
+                                                <input type="checkbox" name="checkbox1" id="inboard" />
+                                                <label className='px-2' for="inboard">Inboard</label>
+                                            </div>
+
+                                            <div className="subcategory_lst">
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="westerbeke" /><label for="westerbeke">Westerbeke</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="crusader" /><label for="crusader">Crusader</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="detriot" /><label for="detriot">Detriot</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="indmar" /><label for="indmar">Indmar</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="yanmar" /><label for="yanmar">Yanmar</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="perkins" /><label for="perkins">Perkins</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
+                                            </div>
+
+                                            <div className="custom-checkbox">
+                                                <input type="checkbox" name="checkbox1" id="outboard" />
+                                                <label className='px-2' for="outboard">Outboard</label>
+                                            </div>
+
+                                            <div className="subcategory_lst">
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="accordion-item">
+                                    <h2 className="accordion-header" id="headingFour">
+                                        <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour">Transportation</button>                     
+                                    </h2>
+
+                                    <div id="collapseFour" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                        <div className="card-body">
+                                            <div className="custom-checkbox">
+                                                <input type="checkbox" name="checkbox1" id="inboard" />
+                                                <label className='px-2' for="inboard">Inboard</label>
+                                            </div>
+
+                                            <div className="subcategory_lst">
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
@@ -71,29 +210,42 @@ const marine = () => {
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
+                                            </div>
+
+                                            <div className="custom-checkbox">
+                                                <input type="checkbox" name="checkbox1" id="outboard" />
+                                                <label className='px-2' for="outboard">Outboard</label>
+                                            </div>
+
+                                            <div className="subcategory_lst">
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
+                                            </div>
                                         </div>
-                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
-                                        <div className="subcategory_lst">
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingThree">
-                                <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree">Plumbing</button>                     
-                            </h2>
-                            <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                            <div className="card-body">
-                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
-                                        <div className="subcategory_lst">
+
+                                <div className="accordion-item">
+                                    <h2 className="accordion-header" id="headingFive">
+                                        <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                                            Boat Builder
+                                        </button>                     
+                                    </h2>
+
+                                    <div id="collapseFive" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                        <div className="card-body">
+                                            <div className="custom-checkbox">
+                                                <input type="checkbox" name="checkbox1" id="inboard" />
+                                                <label className='px-2' for="inboard">Inboard</label>
+                                            </div>
+
+                                            <div className="subcategory_lst">
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
@@ -106,29 +258,37 @@ const marine = () => {
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
+                                            </div>
+
+                                            <div className="custom-checkbox">
+                                                <input type="checkbox" name="checkbox1" id="outboard" />
+                                                <label className='px-2' for="outboard">Outboard</label>
+                                            </div>
+
+                                            <div className="subcategory_lst">
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
+                                            </div>
                                         </div>
-                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
-                                        <div className="subcategory_lst">
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingFour">
-                                <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour">Transportation</button>                     
-                            </h2>
-                            <div id="collapseFour" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                            <div className="card-body">
-                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
-                                        <div className="subcategory_lst">
+
+                                <div className="accordion-item">
+                                    <h2 className="accordion-header" id="headingSix">
+                                        <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseSix">Yacht Designer</button>                     
+                                    </h2>
+
+                                    <div id="collapseSix" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                        <div className="card-body">
+                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
+                                            
+                                            <div className="subcategory_lst">
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
@@ -141,29 +301,82 @@ const marine = () => {
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
+                                            </div>
+
+                                            <div className="custom-checkbox">
+                                                <input type="checkbox" name="checkbox1" id="outboard" />
+                                                <label className='px-2' for="outboard">Outboard</label>
+                                            </div>
+                                            
+                                            <div className="subcategory_lst">
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
+                                            </div>
                                         </div>
-                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
-                                        <div className="subcategory_lst">
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingFive">
-                                <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFive">Boat Builder</button>                     
-                            </h2>
-                            <div id="collapseFive" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                            <div className="card-body">
-                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
-                                        <div className="subcategory_lst">
+
+                                <div className="accordion-item">
+                                    <h2 className="accordion-header" id="headingSeven">
+                                        <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseSeven">Below Waterline</button>                     
+                                    </h2>
+
+                                    <div id="collapseSeven" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                        <div className="card-body">
+                                            <div className="custom-checkbox">
+                                                <input type="checkbox" name="checkbox1" id="inboard" />
+                                                <label className='px-2' for="inboard">Inboard</label>
+                                            </div>
+                                            
+                                            <div className="subcategory_lst">
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="westerbeke" /><label for="westerbeke">Westerbeke</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="crusader" /><label for="crusader">Crusader</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="detriot" /><label for="detriot">Detriot</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="indmar" /><label for="indmar">Indmar</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="yanmar" /><label for="yanmar">Yanmar</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="perkins" /><label for="perkins">Perkins</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
+                                            </div>
+
+                                            <div className="custom-checkbox">
+                                                <input type="checkbox" name="checkbox1" id="outboard" />
+                                                <label className='px-2' for="outboard">Outboard</label>
+                                            </div>
+                                            
+                                            <div className="subcategory_lst">
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="accordion-item">
+                                    <h2 className="accordion-header" id="headingEight">
+                                        <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseEight">Hardware</button>                     
+                                    </h2>
+
+                                    <div id="collapseEight" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                        <div className="card-body">
+                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
+                                            <div className="subcategory_lst">
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
@@ -176,29 +389,113 @@ const marine = () => {
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
+                                            </div>
+
+                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
+                                            
+                                            <div className="subcategory_lst">
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
+                                            </div>
                                         </div>
-                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
-                                        <div className="subcategory_lst">
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingSix">
-                                <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseSix">Yacht Designer</button>                     
-                            </h2>
-                            <div id="collapseSix" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                            <div className="card-body">
-                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
-                                        <div className="subcategory_lst">
+
+                                <div className="accordion-item">
+                                    <h2 className="accordion-header" id="headingNine">
+                                        <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseNine">Above Waterline</button>                     
+                                    </h2>
+
+                                    <div id="collapseNine" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                        <div className="card-body">
+                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
+                                            
+                                            <div className="subcategory_lst">
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="westerbeke" /><label for="westerbeke">Westerbeke</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="crusader" /><label for="crusader">Crusader</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="detriot" /><label for="detriot">Detriot</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="indmar" /><label for="indmar">Indmar</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="yanmar" /><label for="yanmar">Yanmar</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="perkins" /><label for="perkins">Perkins</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
+                                            </div>
+
+                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
+                                            
+                                            <div className="subcategory_lst">
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="accordion-item">
+                                    <h2 className="accordion-header" id="headingTen">
+                                        <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTen">Sailboat</button>                     
+                                    </h2>
+
+                                    <div id="collapseTen" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                        <div className="card-body">
+                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
+                                            <div className="subcategory_lst">
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="westerbeke" /><label for="westerbeke">Westerbeke</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="crusader" /><label for="crusader">Crusader</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="detriot" /><label for="detriot">Detriot</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="indmar" /><label for="indmar">Indmar</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="yanmar" /><label for="yanmar">Yanmar</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="perkins" /><label for="perkins">Perkins</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
+                                            </div>
+
+                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
+                                            
+                                            <div className="subcategory_lst">
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="accordion-item">
+                                    <h2 className="accordion-header" id="headingEleven">
+                                        <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseEleven">Power Generation</button>                     
+                                    </h2>
+
+                                    <div id="collapseEleven" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                        <div className="card-body">
+                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
+                                            
+                                            <div className="subcategory_lst">
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
@@ -211,29 +508,33 @@ const marine = () => {
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
+                                            </div>
+
+                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
+                                            
+                                            <div className="subcategory_lst">
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
+                                            </div>
                                         </div>
-                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
-                                        <div className="subcategory_lst">
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingSeven">
-                                <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseSeven">Below Waterline</button>                     
-                            </h2>
-                            <div id="collapseSeven" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                            <div className="card-body">
-                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
-                                        <div className="subcategory_lst">
+
+                                <div className="accordion-item">
+                                    <h2 className="accordion-header" id="headingTwelve">
+                                        <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwelve">Winter</button>                     
+                                    </h2>
+
+                                    <div id="collapseTwelve" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                        <div className="card-body">
+                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
+                                            <div className="subcategory_lst">
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
@@ -246,29 +547,34 @@ const marine = () => {
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
+                                            </div>
+
+                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
+                                            
+                                            <div className="subcategory_lst">
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
+                                            </div>
                                         </div>
-                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
-                                        <div className="subcategory_lst">
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingEight">
-                                <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseEight">Hardware</button>                     
-                            </h2>
-                            <div id="collapseEight" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                            <div className="card-body">
-                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
-                                        <div className="subcategory_lst">
+
+                                <div className="accordion-item">
+                                    <h2 className="accordion-header" id="headingThirteen">
+                                        <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThirteen">Interior</button>                     
+                                    </h2>
+
+                                    <div id="collapseThirteen" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                        <div className="card-body">
+                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
+                                            
+                                            <div className="subcategory_lst">
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
@@ -281,29 +587,74 @@ const marine = () => {
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
+                                            </div>
+
+                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
+                                            
+                                            <div className="subcategory_lst">
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
+                                            </div>
                                         </div>
-                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
-                                        <div className="subcategory_lst">
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingNine">
-                                <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseNine">Above Waterline</button>                     
-                            </h2>
-                            <div id="collapseNine" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                            <div className="card-body">
-                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
-                                        <div className="subcategory_lst">
+
+                                <div className="accordion-item">
+                                    <h2 className="accordion-header" id="headingFourteen">
+                                        <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFourteen">Haul Out</button>                     
+                                    </h2>
+
+                                    <div id="collapseFourteen" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                        <div className="card-body">
+                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
+                                                
+                                            <div className="subcategory_lst">
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="westerbeke" /><label for="westerbeke">Westerbeke</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="crusader" /><label for="crusader">Crusader</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="detriot" /><label for="detriot">Detriot</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="indmar" /><label for="indmar">Indmar</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="yanmar" /><label for="yanmar">Yanmar</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="perkins" /><label for="perkins">Perkins</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
+                                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
+                                            </div>
+                                            
+                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
+                                            
+                                            <div className="subcategory_lst">
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="accordion-item">
+                                    <h2 className="accordion-header" id="headingFifteen">
+                                        <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFifteen">Surveyor</button>                     
+                                    </h2>
+
+                                    <div id="collapseFifteen" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                        <div className="card-body">
+                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
+                                            
+                                            <div className="subcategory_lst">
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
@@ -316,240 +667,96 @@ const marine = () => {
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
                                                 <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
+                                            </div>
+
+                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
+                                            
+                                            <div className="subcategory_lst">
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
+                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
+                                            </div>
                                         </div>
-                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
-                                        <div className="subcategory_lst">
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingTen">
-                                <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTen">Sailboat</button>                     
-                            </h2>
-                            <div id="collapseTen" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                            <div className="card-body">
-                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
-                                        <div className="subcategory_lst">
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="westerbeke" /><label for="westerbeke">Westerbeke</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="crusader" /><label for="crusader">Crusader</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="detriot" /><label for="detriot">Detriot</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="indmar" /><label for="indmar">Indmar</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="yanmar" /><label for="yanmar">Yanmar</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="perkins" /><label for="perkins">Perkins</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
-                                        </div>
-                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
-                                        <div className="subcategory_lst">
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingEleven">
-                                <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseEleven">Power Generation</button>                     
-                            </h2>
-                            <div id="collapseEleven" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                            <div className="card-body">
-                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
-                                        <div className="subcategory_lst">
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="westerbeke" /><label for="westerbeke">Westerbeke</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="crusader" /><label for="crusader">Crusader</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="detriot" /><label for="detriot">Detriot</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="indmar" /><label for="indmar">Indmar</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="yanmar" /><label for="yanmar">Yanmar</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="perkins" /><label for="perkins">Perkins</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
-                                        </div>
-                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
-                                        <div className="subcategory_lst">
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingTwelve">
-                                <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwelve">Winter</button>                     
-                            </h2>
-                            <div id="collapseTwelve" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                            <div className="card-body">
-                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
-                                        <div className="subcategory_lst">
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="westerbeke" /><label for="westerbeke">Westerbeke</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="crusader" /><label for="crusader">Crusader</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="detriot" /><label for="detriot">Detriot</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="indmar" /><label for="indmar">Indmar</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="yanmar" /><label for="yanmar">Yanmar</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="perkins" /><label for="perkins">Perkins</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
-                                        </div>
-                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
-                                        <div className="subcategory_lst">
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingThirteen">
-                                <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThirteen">Interior</button>                     
-                            </h2>
-                            <div id="collapseThirteen" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                            <div className="card-body">
-                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
-                                        <div className="subcategory_lst">
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="westerbeke" /><label for="westerbeke">Westerbeke</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="crusader" /><label for="crusader">Crusader</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="detriot" /><label for="detriot">Detriot</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="indmar" /><label for="indmar">Indmar</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="yanmar" /><label for="yanmar">Yanmar</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="perkins" /><label for="perkins">Perkins</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
-                                        </div>
-                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
-                                        <div className="subcategory_lst">
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingFourteen">
-                                <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFourteen">Haul Out</button>                     
-                            </h2>
-                            <div id="collapseFourteen" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                            <div className="card-body">
-                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
-                                        <div className="subcategory_lst">
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="westerbeke" /><label for="westerbeke">Westerbeke</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="crusader" /><label for="crusader">Crusader</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="detriot" /><label for="detriot">Detriot</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="indmar" /><label for="indmar">Indmar</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="yanmar" /><label for="yanmar">Yanmar</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="perkins" /><label for="perkins">Perkins</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
-                                        </div>
-                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
-                                        <div className="subcategory_lst">
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="headingFifteen">
-                                <button type="button" className="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFifteen">Surveyor</button>                     
-                            </h2>
-                            <div id="collapseFifteen" className="accordion-collapse collapse" data-bs-parent="#myAccordion">
-                            <div className="card-body">
-                                    <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="inboard" /><label className='px-2' for="inboard">Inboard</label></div>
-                                        <div className="subcategory_lst">
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cummins" /><label for="cummins" >Cummins</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="cat" /><label for="cat">CAT</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nanni" /><label for="nanni">Nanni</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="westerbeke" /><label for="westerbeke">Westerbeke</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="crusader" /><label for="crusader">Crusader</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="detriot" /><label for="detriot">Detriot</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="indmar" /><label for="indmar">Indmar</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="yanmar" /><label for="yanmar">Yanmar</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="perkins" /><label for="perkins">Perkins</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="man" /><label for="man">mAN</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="universal" /><label for="universal">Universal</label></div>
-                                                <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="nissan" /><label for="nissan">Nissan</label></div>
-                                        </div>
-                                        <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="outboard" /><label className='px-2' for="outboard">Outboard</label></div>
-                                        <div className="subcategory_lst">
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Mercury" /><label for="Mercury" >Mercury</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Yamaha" /><label for="Yamaha">Yamaha</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Suzuki" /><label for="Suzuki">Suzuki</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Honda" /><label for="Honda">Honda</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Evinrude" /><label for="Evinrude">Evinrude</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Tohatsu" /><label for="Tohatsu">Tohatsu</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Minn Kota" /><label for="Minn Kota">Minn Kota</label></div>
-                                            <div className="custom-checkbox"><input type="checkbox" name="checkbox1" id="Torqeedo" /><label for="Torqeedo">Torqeedo</label></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
                     </form>
                 </div>
             </div>
+
             <div className="col">
                 <div className='main-tech-search'>
                     <div className='tech_pro'>
-                        <div className='custom-media'>
+                        {
+                            marine.length > 0 && marine.map((item, i) => (
+                                <div className='custom-media'>
+                                    <div className="media">
+                                        <div className="media-left">
+                                            <img src="../../images/boatrx_square_whitebg.png" className="media-object" alt="media object" />
+                                        </div>
+                                        <div className="media-body">
+                                            <h6>{item.name}<sub>PRO</sub></h6>
+                                            <div className="review-star">
+                                                <i className="fa fa-star"></i>
+                                                <i className="fa fa-star"></i>
+                                                <i className="fa fa-star"></i>
+                                                <i className="fa fa-star"></i>
+                                                <i className="fa fa-star"></i> <span>5</span><span className="review-count">(1)</span>
+                                            </div>
+                                            <div className='h-scroll'>
+                                               
+                                                <div className='tech_lst'>
+                                                    {marineCat.length > 0 && marineCat.map((element, x) => (
+                                                        <div className='tech-icon'>
+                                                            <i><img src={`http://34.254.97.212:8080/${element.image}`} alt="" /></i>
+                                                            <span>{element.name}</span> 
+                                                        </div>
+                                                        
+                                                        
+                                                    ))}
+
+                                                        {/* {Array.isArray(item.category) &&
+                                                        JSON.parse(item.category).map((element) => (
+                                                            <li key={element.value}>
+                                                                <label>{element.label}</label>
+                                                                <ul>
+                                                                    {marineCat
+                                                                        .filter((dT) => dT.name === element.label)
+                                                                        .map((filtered) => (
+                                                                            <li key={filtered.id}>{filtered.name}</li>
+                                                                        ))}
+                                                                </ul>
+                                                            </li>
+                                                        ))} */}
+                                                </div>
+                                                {/* <div className='tech_lst'>
+                                                    {marineCat.length > 0 && (
+                                                        Array.isArray(item.category) || typeof JSON.parse(item.category) === 'string'
+                                                    ) && (
+                                                        marineCat
+                                                        .filter((obj) => JSON.parse(item.category).includes(obj.label))
+                                                            .map((element, x) => (
+                                                                <div className='tech-icon' key={element.id}>
+                                                                    <i><img src={`http://34.254.97.212:8080/${element.image}`} alt="" /></i>
+                                                                    <span>{element.name}</span> 
+                                                                </div>
+                                                            ))  
+                                                    )}
+                                                </div> */}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>     
+                            ))
+                        }
+
+                        {/* <div className='custom-media'>
                             <div className="media">
                                 <div className="media-left">
                                 <img src="../../images/boatrx_square_whitebg.png" className="media-object" />
@@ -573,6 +780,7 @@ const marine = () => {
                                 </div>
                             </div>
                         </div>
+                        
                         <div className='custom-media'>
                             <div className="media">
                                 <div className="media-left">
@@ -662,13 +870,57 @@ const marine = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        
+                        </div> */}
                     </div>
                     <div className='tect-user'>
                         <div className="custom-media">
                             <div className="media">
-                                <div className="media-left"><img src="../../images/safety.png" className="media-object" /></div>
+                                <div className="media-left"><img src="../../images/safety.png" className="media-object" alt="safety object" /></div>
+                                <div className="media-body">
+                                    <h6>BoatRx<sub>PRO</sub></h6>
+                                    <div className="review-star"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i> <span>5</span><span className="review-count">(1)</span></div>
+                                    <div className="h-scroll">
+                                        <div className="tech_lst">
+                                            <div className="tech-icon">
+                                                <i><img src="../../images/icons/search-icon15.png" alt="search icon" /></i> 
+                                                <i><img src="../../images/icons/search-icon11.png" alt="search icon" /></i>
+                                                <i><img src="../../images/icons/icon5.png" alt="search icon" /></i>
+                                                <i><img src="../../images/icons/search-icon15.png" alt="search icon" /></i>
+                                                <i><img src="../../images/icons/search-icon11.png" alt="search icon" /></i>
+                                                <i><img src="../../images/icons/icon5.png" alt="search icon" /></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="custom-media">
+                            <div className="media">
+                                <div className="media-left"><img src="../../images/safety.png" className="media-object" alt="safe object" /></div>
+                                <div className="media-body">
+                                    <h6>
+                                        BoatRx
+                                        <sub>PRO</sub>
+                                    </h6>
+                                    <div className="review-star"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i> <span>5</span><span className="review-count">(1)</span></div>
+                                    <div className="h-scroll">
+                                        <div className="tech_lst">
+                                            <div className="tech-icon">
+                                                <i><img src="../../images/icons/search-icon15.png" alt="" /></i> 
+                                                <i><img src="../../images/icons/search-icon11.png" alt="" /></i>
+                                                <i><img src="../../images/icons/icon5.png" alt="" /></i>
+                                                <i><img src="../../images/icons/search-icon15.png" alt="" /></i>
+                                                <i><img src="../../images/icons/search-icon11.png" alt="" /></i>
+                                                <i><img src="../../images/icons/icon5.png" alt="" /></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="custom-media">
+                            <div className="media">
+                                <div className="media-left"><img src="../../images/safety.png" className="media-object" alt="medai object" /></div>
                                 <div className="media-body">
                                     <h6>BoatRx<sub>PRO</sub></h6>
                                     <div className="review-star"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i> <span>5</span><span className="review-count">(1)</span></div>
@@ -689,49 +941,7 @@ const marine = () => {
                         </div>
                         <div className="custom-media">
                             <div className="media">
-                                <div className="media-left"><img src="../../images/safety.png" className="media-object" /></div>
-                                <div className="media-body">
-                                    <h6>BoatRx<sub>PRO</sub></h6>
-                                    <div className="review-star"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i> <span>5</span><span className="review-count">(1)</span></div>
-                                    <div className="h-scroll">
-                                        <div className="tech_lst">
-                                            <div className="tech-icon">
-                                                <i><img src="../../images/icons/search-icon15.png" alt="" /></i> 
-                                                <i><img src="../../images/icons/search-icon11.png" alt="" /></i>
-                                                <i><img src="../../images/icons/icon5.png" alt="" /></i>
-                                                <i><img src="../../images/icons/search-icon15.png" alt="" /></i>
-                                                <i><img src="../../images/icons/search-icon11.png" alt="" /></i>
-                                                <i><img src="../../images/icons/icon5.png" alt="" /></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="custom-media">
-                            <div className="media">
-                                <div className="media-left"><img src="../../images/safety.png" className="media-object" /></div>
-                                <div className="media-body">
-                                    <h6>BoatRx<sub>PRO</sub></h6>
-                                    <div className="review-star"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i> <span>5</span><span className="review-count">(1)</span></div>
-                                    <div className="h-scroll">
-                                        <div className="tech_lst">
-                                            <div className="tech-icon">
-                                                <i><img src="../../images/icons/search-icon15.png" alt="" /></i> 
-                                                <i><img src="../../images/icons/search-icon11.png" alt="" /></i>
-                                                <i><img src="../../images/icons/icon5.png" alt="" /></i>
-                                                <i><img src="../../images/icons/search-icon15.png" alt="" /></i>
-                                                <i><img src="../../images/icons/search-icon11.png" alt="" /></i>
-                                                <i><img src="../../images/icons/icon5.png" alt="" /></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="custom-media">
-                            <div className="media">
-                                <div className="media-left"><img src="../../images/safety.png" className="media-object" /></div>
+                                <div className="media-left"><img src="../../images/safety.png" className="media-object" alt="media object" /></div>
                                 <div className="media-body">
                                     <h6>BoatRx<sub>PRO</sub></h6>
                                     <div className="review-star"><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i><i className="fa fa-star"></i> <span>5</span><span className="review-count">(1)</span></div>
@@ -755,30 +965,30 @@ const marine = () => {
                 <nav aria-label=" Page navigation example">
                     <ul className="ship_styl pagination mt-4 mb-5">
                         <li className="page-item">
-                        <a className="page-link" to="#" aria-label="Previous">
+                        <a className="page-link" href="#!" to="#" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                         </li>
-                        <li className="page-item"><a className="page-link" to="#">1</a></li>
-                        <li className="page-item"><a className="page-link" to="#">2</a></li>
-                        <li className="page-item"><a className="page-link" to="#">3</a></li>
+                        <li className="page-item"><a className="page-link" href="#!" to="#">1</a></li>
+                        <li className="page-item"><a className="page-link" href="#!" to="#">2</a></li>
+                        <li className="page-item"><a className="page-link" href="#!" to="#">3</a></li>
                         <li className="page-item">
-                        <a className="page-link" to="#" aria-label="Next">
+                        <a className="page-link"  href="#!" to="#" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                         </li>
                     </ul>
-                    </nav>
+                </nav>
             </div>
+
             <div className="col">
                 <div className="main-iframe">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d184551.90977327293!2d-79.54286233854499!3d43.7183709578687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cb90d7c63ba5%3A0x323555502ab4c477!2sToronto%2C%20ON%2C%20Canada!5e0!3m2!1sen!2s!4v1692009965988!5m2!1sen!2s" width="100%" height="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d184551.90977327293!2d-79.54286233854499!3d43.7183709578687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4cb90d7c63ba5%3A0x323555502ab4c477!2sToronto%2C%20ON%2C%20Canada!5e0!3m2!1sen!2s!4v1692009965988!5m2!1sen!2s" width="100%" height="100%" allowfullscreen="" title="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
-            
         </div>
     </div>
   )
 }
 
-export default marine
+export default Marine
